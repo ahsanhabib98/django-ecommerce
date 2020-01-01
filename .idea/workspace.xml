@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1bd1e75d-c5d8-4316-87a6-0a015d617ebf" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1V6WgKyqnc2pbO59XCfP71RQVlv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/demo/settings" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="demo" type="Python.DjangoServer" factoryName="Django server">
+      <module name="demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="djecommerce.settings.development" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1bd1e75d-c5d8-4316-87a6-0a015d617ebf" name="Default Changelist" comment="" />
+      <created>1576574134547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576574134547</updated>
+      <workItem from="1576574157724" duration="4665000" />
+      <workItem from="1576643320578" duration="790000" />
+      <workItem from="1576733545393" duration="3055000" />
+      <workItem from="1576740570612" duration="1302000" />
+      <workItem from="1576741966454" duration="6716000" />
+      <workItem from="1576987697161" duration="3936000" />
+      <workItem from="1576993960992" duration="656000" />
+      <workItem from="1577166372065" duration="1261000" />
+      <workItem from="1577333961038" duration="20000" />
+      <workItem from="1577777896270" duration="10775000" />
+      <workItem from="1577861506712" duration="11825000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="495" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577780041996">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="495" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577780041996" />
+    <state x="709" y="344" width="559" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576749415833">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="709" y="344" width="559" height="390" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1576749415833" />
+    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577333974716">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577333974716" />
+    <state width="1807" height="296" key="GridCell.Tab.0.bottom" timestamp="1577873028827">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="296" key="GridCell.Tab.0.bottom/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577873028827" />
+    <state width="1807" height="296" key="GridCell.Tab.0.center" timestamp="1577873028827">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="296" key="GridCell.Tab.0.center/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577873028827" />
+    <state width="1807" height="296" key="GridCell.Tab.0.left" timestamp="1577873028827">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="296" key="GridCell.Tab.0.left/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577873028827" />
+    <state width="1807" height="296" key="GridCell.Tab.0.right" timestamp="1577873028827">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="296" key="GridCell.Tab.0.right/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577873028827" />
+  </component>
+</project>
