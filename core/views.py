@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
@@ -5,10 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
-from .models import Item, Order, OrderItem
+from .models import Item, Order, OrderItem, BillingAddress
+from .forms import CheckoutForm
 
 
 # Create your views here.
+import stripe
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class HomeView(ListView):
@@ -35,8 +39,55 @@ class ItemDetailView(DetailView):
     template_name = 'product.html'
 
 
-def checkout(request):
-    return render(request, 'checkout.html')
+class CheckoutView(View):
+    def get(self, *args, **kwargs):
+        context = {
+            'form': CheckoutForm()
+        }
+        return render(self.request, "checkout.html", context)
+
+    def post(self, *args, **kwargs):
+        form = CheckoutForm(self.request.POST or None)
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            if form.is_valid():
+                street_address = form.cleaned_data.get('street_address')
+                apartment_address = form.cleaned_data.get('apartment_address')
+                country = form.cleaned_data.get('country')
+                zip = form.cleaned_data.get('zip')
+                same_shipping_address = form.cleaned_data.get('same_shipping_address')
+                save_info = form.cleaned_data.get('save_info')
+                payment_option = form.cleaned_data.get('payment_option')
+                billing_address = BillingAddress(
+                    user=self.request.user,
+                    street_address=street_address,
+                    apartment_address=apartment_address,
+                    country=country,
+                    zip=zip
+                )
+                billing_address.save()
+                order.billing_address = billing_address
+                order.save()
+                return redirect('core:checkout')
+            messages.warning(self.request, "Failed checkout")
+            return redirect('core:checkout')
+        except ObjectDoesNotExist:
+            messages.error(self.request, "You do not have an active order")
+            return redirect('core:order-summary')
+
+
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, "payment.html")
+
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        token = self.request.POST.get('stripeToken')
+        stripe.Charge.create(
+            amount=2000,
+            currency="usd",
+            source=token
+        )
 
 
 @login_required
