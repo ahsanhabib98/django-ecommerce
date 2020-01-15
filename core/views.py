@@ -6,13 +6,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
-from .models import Item, Order, OrderItem, BillingAddress, Payment
-from .forms import CheckoutForm
-
+from .models import Item, Order, OrderItem, Address, Payment, Coupon, Refund
+from .forms import CheckoutForm, CouponForm, RefundForm
 
 # Create your views here.
+import random
+import string
 import stripe
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+def create_ref_code():
+    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
 
 class HomeView(ListView):
@@ -30,7 +36,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
             }
             return render(self.request, 'order_summary.html', context)
         except ObjectDoesNotExist:
-            messages.error(self.request, "You do not have an active order")
+            messages.warning(self.request, "You do not have an active order")
             return redirect("/")
 
 
@@ -41,10 +47,36 @@ class ItemDetailView(DetailView):
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
-        context = {
-            'form': CheckoutForm()
-        }
-        return render(self.request, "checkout.html", context)
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            form = CheckoutForm()
+            context = {
+                'form': form,
+                'couponform': CouponForm(),
+                'order': order,
+                'DISPLAY_COUPON_FORM': True
+            }
+
+            shipping_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type='S',
+                default=True
+            )
+            if shipping_address_qs.exists():
+                context.update({'default_shipping_address': shipping_address_qs[0]})
+
+            billing_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type='B',
+                default=True
+            )
+            if billing_address_qs.exists():
+                context.update({'default_billing_address': billing_address_qs[0]})
+
+            return render(self.request, "checkout.html", context)
+        except ObjectDoesNotExist:
+            messages.info(self.request, "You do not have an active order")
+            return redirect("core:checkout")
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
@@ -58,12 +90,13 @@ class CheckoutView(View):
                 same_shipping_address = form.cleaned_data.get('same_shipping_address')
                 save_info = form.cleaned_data.get('save_info')
                 payment_option = form.cleaned_data.get('payment_option')
-                billing_address = BillingAddress(
+                billing_address = Address(
                     user=self.request.user,
                     street_address=street_address,
                     apartment_address=apartment_address,
                     country=country,
-                    zip=zip
+                    zip=zip,
+                    address_type='B'
                 )
                 billing_address.save()
                 order.billing_address = billing_address
@@ -77,26 +110,31 @@ class CheckoutView(View):
                     messages.warning(self.request, "Invalid payment option selected")
                     return redirect('core:checkout')
         except ObjectDoesNotExist:
-            messages.error(self.request, "You do not have an active order")
+            messages.warning(self.request, "You do not have an active order")
             return redirect('core:order-summary')
 
 
 class PaymentView(View):
     def get(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        context = {
-            'order': order
-        }
-        return render(self.request, "payment.html", context)
+        if order.billing_address:
+            context = {
+                'order': order,
+                'DISPLAY_COUPON_FORM': False
+            }
+            return render(self.request, "payment.html", context)
+        else:
+            messages.warning(self.request, "You have not added a billing address")
+            return redirect("core:checkout")
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
         token = self.request.POST.get('stripeToken')
-        amount = int(order.get_total()*100)
+        amount = int(order.get_total() * 100)
 
         try:
             charge = stripe.Charge.create(
-                amount=amount,   # cents
+                amount=amount,  # cents
                 currency="usd",
                 source=token
             )
@@ -108,48 +146,54 @@ class PaymentView(View):
             payment.amount = order.get_total()
             payment.save()
 
+            order_items = order.items.all()
+            order_items.update(ordered=True)
+            for item in order_items:
+                item.save()
+
             # assign the payment to the order
             order.ordered = True
             order.payment = payment
+            order.ref_code = create_ref_code()
             order.save()
 
             messages.success(self.request, "Your order was successful!")
             return redirect("/")
 
         except stripe.error.CardError as e:
-            messages.error(self.request, f"{e.error.message}")
+            messages.warning(self.request, f"{e.error.message}")
             return redirect("/")
 
         except stripe.error.RateLimitError as e:
             # Too many requests made to the API too quickly
-            messages.error(self.request, "Rate limit error")
+            messages.warning(self.request, "Rate limit error")
             return redirect("/")
 
         except stripe.error.InvalidRequestError as e:
             # Invalid parameters were supplied to Stripe's API
-            messages.error(self.request, "Invalid parameters")
+            messages.warning(self.request, "Invalid parameters")
             return redirect("/")
 
         except stripe.error.AuthenticationError as e:
             # Authentication with Stripe's API failed
             # (maybe you changed API keys recently)
-            messages.error(self.request, "Not authenticated")
+            messages.warning(self.request, "Not authenticated")
             return redirect("/")
 
         except stripe.error.APIConnectionError as e:
             # Network communication with Stripe failed
-            messages.error(self.request, "Network error")
+            messages.warning(self.request, "Network error")
             return redirect("/")
 
         except stripe.error.StripeError as e:
             # Display a very generic error to the user, and maybe send
             # yourself an email
-            messages.error(self.request, "Something went wrong. You were not charged. Please try again.")
+            messages.warning(self.request, "Something went wrong. You were not charged. Please try again.")
             return redirect("/")
 
         except Exception as e:
             # send an email to ourselves
-            messages.error(self.request, "A serious error occurred. We have been notified.")
+            messages.warning(self.request, "A serious error occurred. We have been notified.")
             return redirect("/")
 
 
@@ -224,3 +268,60 @@ def remove_single_item_from_cart(request, slug):
         # add a message saying the user doesn't have an order
         messages.info(request, "You do not have an active order.")
         return redirect("core:product", slug=slug)
+
+
+def get_coupon(request, code):
+    try:
+        coupon = Coupon.objects.get(code=code)
+        return coupon
+    except ObjectDoesNotExist:
+        messages.info(request, "This coupon does not exist")
+        return redirect("core:checkout")
+
+
+class AddCouponView(View):
+    def post(self, *args, **kwargs):
+        form = CouponForm(self.request.POST, None)
+        if form.is_valid():
+            try:
+                code = form.cleaned_data.get('code')
+                order = Order.objects.get(user=self.request.user, ordered=False)
+                order.coupon = get_coupon(self.request, code)
+                order.save()
+                messages.success(self.request, "Successfully added coupon")
+                return redirect("core:checkout")
+            except ObjectDoesNotExist:
+                messages.info(self.request, "You do not have an active order")
+                return redirect("core:checkout")
+
+
+class RequestRefundView(View):
+    def get(self, *args, **kwargs):
+        form = RefundForm()
+        context = {
+            'form': form
+        }
+        return render(self.request, "request_refund.html", context)
+
+    def post(self, *args, **kwargs):
+        form = RefundForm(self.request.POST)
+        if form.is_valid():
+            ref_code = form.cleaned_data.get('ref_code')
+            message = form.cleaned_data.get('message')
+            email = form.cleaned_data.get('email')
+            try:
+                order = Order.objects.get(ref_code=ref_code)
+                order.refund_requested = True
+                order.save()
+
+                refund = Refund()
+                refund.order = order
+                refund.reason = message
+                refund.email = email
+                refund.save()
+
+                messages.info(self.request, "Your request was received.")
+                return redirect("core:request-refund")
+            except ObjectDoesNotExist:
+                messages.info(self.request, "This order does not exist.")
+                return redirect("core:request-refund")

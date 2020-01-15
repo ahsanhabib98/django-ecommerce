@@ -2,11 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bd1e75d-c5d8-4316-87a6-0a015d617ebf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/migrations/0002_auto_20200115_1220.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0003_auto_20200115_1220.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/12_HPghTDx.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/12_VKW0sfr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/order_snippet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/request_refund.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0002_auto_20191231_1152.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0003_item_slug.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0004_item_discount_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0005_auto_20200101_0853.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0006_auto_20200101_0920.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0007_auto_20200101_0925.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0008_auto_20200101_1003.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0009_auto_20200101_1004.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0010_auto_20200106_0707.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0011_auto_20200106_1232.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djecommerce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djecommerce/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +140,11 @@
       <workItem from="1577861506712" duration="12088000" />
       <workItem from="1577944400740" duration="18051000" />
       <workItem from="1578288414687" duration="14899000" />
-      <workItem from="1578373758110" duration="10023000" />
+      <workItem from="1578373758110" duration="10213000" />
+      <workItem from="1578470439021" duration="5940000" />
+      <workItem from="1578548374976" duration="603000" />
+      <workItem from="1578890049267" duration="485000" />
+      <workItem from="1579066088316" duration="19030000" />
     </task>
     <servers />
   </component>
@@ -138,25 +167,25 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="709" y="344" width="559" height="390" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1576749415833" />
-    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577333974716">
+    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1578890101642">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1577333974716" />
-    <state width="1807" height="296" key="GridCell.Tab.0.bottom" timestamp="1578380842749">
+    <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578890101642" />
+    <state width="1807" height="296" key="GridCell.Tab.0.bottom" timestamp="1579079852094">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.bottom/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578380842749" />
-    <state width="1807" height="296" key="GridCell.Tab.0.center" timestamp="1578380842749">
+    <state width="1807" height="296" key="GridCell.Tab.0.bottom/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579079852094" />
+    <state width="1807" height="296" key="GridCell.Tab.0.center" timestamp="1579079852094">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.center/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578380842749" />
-    <state width="1807" height="296" key="GridCell.Tab.0.left" timestamp="1578380842749">
+    <state width="1807" height="296" key="GridCell.Tab.0.center/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579079852094" />
+    <state width="1807" height="296" key="GridCell.Tab.0.left" timestamp="1579079852093">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.left/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578380842749" />
-    <state width="1807" height="296" key="GridCell.Tab.0.right" timestamp="1578380842749">
+    <state width="1807" height="296" key="GridCell.Tab.0.left/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579079852093" />
+    <state width="1807" height="296" key="GridCell.Tab.0.right" timestamp="1579079852094">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.right/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578380842749" />
+    <state width="1807" height="296" key="GridCell.Tab.0.right/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579079852094" />
   </component>
 </project>
