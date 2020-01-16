@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
 
@@ -21,6 +22,23 @@ ADDRESS_CHOICES = (
     ('B', 'Billing'),
     ('S', 'Shipping')
 )
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=50, null=True, blank=True)
+    one_click_purchasing = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+
+
+def userprofile_receiver(sender, instance, created, *args, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
 
 
 class Item(models.Model):
@@ -78,7 +96,7 @@ class OrderItem(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    ref_code = models.CharField(max_length=20)
+    ref_code = models.CharField(max_length=20, null=True, blank=True)
     items = models.ManyToManyField(OrderItem)
     srart_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
