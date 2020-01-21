@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bd1e75d-c5d8-4316-87a6-0a015d617ebf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/migrations/0005_userprofile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/migrations/0006_auto_20200116_1129.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/12_GkTckmG.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djecommerce/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/djecommerce/settings/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/checkout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
     </list>
@@ -128,7 +120,9 @@
       <workItem from="1578548374976" duration="603000" />
       <workItem from="1578890049267" duration="485000" />
       <workItem from="1579066088316" duration="19165000" />
-      <workItem from="1579154795491" duration="15982000" />
+      <workItem from="1579154795491" duration="16178000" />
+      <workItem from="1579512948865" duration="5411000" />
+      <workItem from="1579588821072" duration="4932000" />
     </task>
     <servers />
   </component>
@@ -155,21 +149,21 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1578890101642" />
-    <state width="1807" height="296" key="GridCell.Tab.0.bottom" timestamp="1579177077357">
+    <state width="1807" height="195" key="GridCell.Tab.0.bottom" timestamp="1579591151236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.bottom/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579177077357" />
-    <state width="1807" height="296" key="GridCell.Tab.0.center" timestamp="1579177077357">
+    <state width="1807" height="195" key="GridCell.Tab.0.bottom/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579591151236" />
+    <state width="1807" height="195" key="GridCell.Tab.0.center" timestamp="1579591151236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.center/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579177077357" />
-    <state width="1807" height="296" key="GridCell.Tab.0.left" timestamp="1579177077356">
+    <state width="1807" height="195" key="GridCell.Tab.0.center/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579591151236" />
+    <state width="1807" height="195" key="GridCell.Tab.0.left" timestamp="1579591151236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.left/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579177077356" />
-    <state width="1807" height="296" key="GridCell.Tab.0.right" timestamp="1579177077357">
+    <state width="1807" height="195" key="GridCell.Tab.0.left/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579591151236" />
+    <state width="1807" height="195" key="GridCell.Tab.0.right" timestamp="1579591151236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="296" key="GridCell.Tab.0.right/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579177077357" />
+    <state width="1807" height="195" key="GridCell.Tab.0.right/1920.0.1366.768/67.27.1853.1053@67.27.1853.1053" timestamp="1579591151236" />
   </component>
 </project>

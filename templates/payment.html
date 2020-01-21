@@ -186,7 +186,7 @@
 
 {% block extra_scripts %}
 
-    <script type="text/javascript" nonce="">  // Create a Stripe client.
+    <script nonce="">  // Create a Stripe client.
       var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
       // Create an instance of Elements.
@@ -259,7 +259,7 @@
 
       var currentCardForm = $('.current-card-form');
       var newCardForm = $('.new-card-form');
-      var use_default_card = document.queryCommandState("input[name=save]");
+      var use_default_card = document.querySelector("input[name=use_default_card]");
       use_default_card.addEventListener('change', function () {
         if (this.checked) {
             newCardForm.hide();
